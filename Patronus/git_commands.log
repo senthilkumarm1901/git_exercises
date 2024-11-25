@@ -1,0 +1,92 @@
+senthilkumar.m@terminal sec6_git-branches % mkdir -p Patronus
+senthilkumar.m@terminal sec6_git-branches % cd Patronus 
+senthilkumar.m@terminal Patronus % git init
+Initialized empty Git repository in /Users/senthilkumar.m/Library/CloudStorage/OneDrive-TOYOTAConnectedIndia/Learnings/udemy_courses/git_udemy_course/sec6_git-branches/Patronus/.git/
+senthilkumar.m@terminal Patronus % git config user.email "senthilkumar.m1901@gmail.com" && git config user.name "senthilkumarm1901"
+senthilkumar.m@terminal Patronus % touch patronus.txt
+senthilkumar.m@terminal Patronus % git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	patronus.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+senthilkumar.m@terminal Patronus % git add patronus.txt && git commit -m "add empty patronus file"
+[main (root-commit) 48f55f1] add empty patronus file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 patronus.txt
+senthilkumar.m@terminal Patronus % git switch -c harry
+Switched to a new branch 'harry'
+senthilkumar.m@terminal Patronus % git status
+On branch harry
+nothing to commit, working tree clean
+senthilkumar.m@terminal Patronus % git switch main
+Switched to branch 'main'
+senthilkumar.m@terminal Patronus % git branch --help  
+senthilkumar.m@terminal Patronus % git branch snape
+senthilkumar.m@terminal Patronus % git branch -v
+  harry 48f55f1 add empty patronus file
+* main  48f55f1 add empty patronus file
+  snape 48f55f1 add empty patronus file
+senthilkumar.m@terminal Patronus % git switch harry
+Switched to branch 'harry'
+senthilkumar.m@terminal Patronus % echo """    HARRY'S PATRONUS
+
+       /|       |\
+    `__\\       //__'
+       ||      ||
+     \__`\     |'__/
+       `_\\   //_'
+       _.,:---;,._
+       \_:     :_/
+         |@. .@|
+         |     |
+         ,\.-./ \
+         ;;`-'   `---__________-----.-.
+         ;;;                         \_\
+         ';;;                         |
+          ;    |                      ;
+           \   \     \        |      /
+            \_, \    /        \     |\
+              |';|  |,,,,,,,,/ \    \ \_
+              |  |  |           \   /   |
+              \  \  |           |  / \  |
+               | || |           | |   | |
+               | || |           | |   | |
+               | || |           | |   | |
+               |_||_|           |_|   |_|
+              /_//_/           /_/   /_/""" >> patronus.txt
+dquote bquote> 
+senthilkumar.m@terminal Patronus % vi patronus.txt 
+senthilkumar.m@terminal Patronus % git add patronus.txt && git commit -m "add harry's stag patronus"
+[harry 0107caf] add harry's stag patronus
+ 1 file changed, 26 insertions(+)
+senthilkumar.m@terminal Patronus % git switch snape 
+Switched to branch 'snape'
+senthilkumar.m@terminal Patronus % vi patronus.txt 
+senthilkumar.m@terminal Patronus % git add patronus.txt && git commit -m  "add snape's doe patronus"
+[snape 4924f1b] add snape's doe patronus
+ 1 file changed, 16 insertions(+)
+senthilkumar.m@terminal Patronus % git switch -c lily
+Switched to a new branch 'lily'
+senthilkumar.m@terminal Patronus % vi patronus.txt 
+senthilkumar.m@terminal Patronus % git add patronus.txt && git commit -m "add lily's doe patronus"
+[lily ec4ae19] add lily's doe patronus
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+senthilkumar.m@terminal Patronus % git log --oneline -all
+error: switch `l' expects a numerical value
+senthilkumar.m@terminal Patronus % git log --oneline --all
+ec4ae19 (HEAD -> lily) add lily's doe patronus
+4924f1b (snape) add snape's doe patronus
+0107caf (harry) add harry's stag patronus
+48f55f1 (main) add empty patronus file
+senthilkumar.m@terminal Patronus % git branch -D snape
+Deleted branch snape (was 4924f1b).
+senthilkumar.m@terminal Patronus % git branch -v
+  harry 0107caf add harry's stag patronus
+* lily  ec4ae19 add lily's doe patronus
+  main  48f55f1 add empty patronus file
+
