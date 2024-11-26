@@ -1,0 +1,252 @@
+## Fast Forward
+
+senthilkumar.m@terminal sec7_merge-branches % mkdir -p Greetings
+senthilkumar.m@terminal sec7_merge-branches % cd Greetings 
+senthilkumar.m@terminal Greetings % git init
+Initialized empty Git repository in /Users/senthilkumar.m/Library/CloudStorage/OneDrive-TOYOTAConnectedIndia/Learnings/udemy_courses/git_udemy_course/sec7_merge-branches/Greetings/.git/
+senthilkumar.m@terminal Greetings % git status
+On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+senthilkumar.m@terminal Greetings % vi english_greetings.txt
+senthilkumar.m@terminal Greetings % git add english_greetings.txt && git commit -m "add empty file"
+[main (root-commit) 4ef8fcb] add empty file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 english_greetings.txt
+senthilkumar.m@terminal Greetings % git switch -c eng_branch
+Switched to a new branch 'eng_branch'
+senthilkumar.m@terminal Greetings % vi english_greetings.txt 
+senthilkumar.m@terminal Greetings % git add english_greetings.txt && git commit -m "add first english greeting"
+[eng_branch 5dff6f9] add first english greeting
+ 1 file changed, 1 insertion(+)
+senthilkumar.m@terminal Greetings % git switch main
+Switched to branch 'main'
+senthilkumar.m@terminal Greetings % git branch eng_branch
+fatal: a branch named 'eng_branch' already exists
+senthilkumar.m@terminal Greetings % git merge eng_branch
+Updating 4ef8fcb..5dff6f9
+Fast-forward
+ english_greetings.txt | 1 +
+ 1 file changed, 1 insertion(+)
+senthilkumar.m@terminal Greetings % git log --graph
+* commit 5dff6f9747dbe6f612260f144e5a331b17c6e7ee (HEAD -> main, eng_branch)
+| Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| Date:   Mon Nov 25 13:30:38 2024 +0530
+| 
+|     add first english greeting
+| 
+* commit 4ef8fcbc233bac6b053e60a942c1e69491349ee0
+  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+  Date:   Mon Nov 25 13:30:01 2024 +0530
+  
+      add empty file
+senthilkumar.m@terminal Greetings % git log --graph --decorate --all
+* commit 5dff6f9747dbe6f612260f144e5a331b17c6e7ee (HEAD -> main, eng_branch)
+| Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| Date:   Mon Nov 25 13:30:38 2024 +0530
+| 
+|     add first english greeting
+| 
+* commit 4ef8fcbc233bac6b053e60a942c1e69491349ee0
+  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+  Date:   Mon Nov 25 13:30:01 2024 +0530
+  
+      add empty file
+
+
+---
+
+## Merge commit
+
+senthilkumar.m@terminal Greetings % git switch -c fr_branch
+Switched to a new branch 'fr_branch'
+senthilkumar.m@terminal Greetings % vi french_greetings.txt
+senthilkumar.m@terminal Greetings % git add french_greetings.txt && git commit -m "add first french greeting"
+[fr_branch e6f74c7] add first french greeting
+ 1 file changed, 1 insertion(+)
+ create mode 100644 french_greetings.txt
+senthilkumar.m@terminal Greetings % git switch main
+Switched to branch 'main'
+senthilkumar.m@terminal Greetings % vi english_greetings.txt 
+senthilkumar.m@terminal Greetings % git add english_greetings.txt && git commit -m "add second sentence in english greeting txt"
+[main 637f9ca] add second sentence in english greeting txt
+ 1 file changed, 1 insertion(+)
+senthilkumar.m@terminal Greetings % git merge fr_branch
+Merge made by the 'ort' strategy.
+ french_greetings.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 french_greetings.txt
+senthilkumar.m@terminal Greetings % git log --graph --decorate --all
+*   commit 8bebcdaf6559f2593b65d049d495b03881fd4665 (HEAD -> main)
+|\  Merge: 637f9ca e6f74c7
+| | Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| | Date:   Mon Nov 25 13:42:09 2024 +0530
+| | 
+| |     Merge branch 'fr_branch' containing `french_greeting` with `main` branch
+| | 
+| * commit e6f74c7ab7ee1b1b2b7324ceefadf18b5acefb67 (fr_branch)
+| | Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| | Date:   Mon Nov 25 13:41:16 2024 +0530
+| | 
+| |     add first french greeting
+| | 
+* | commit 637f9ca1ec213f0cbf0705ecd2b2485e1ec028c5
+|/  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+|   Date:   Mon Nov 25 13:42:01 2024 +0530
+|   
+|       add second sentence in english greeting txt
+| 
+* commit 5dff6f9747dbe6f612260f144e5a331b17c6e7ee (eng_branch)
+| Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| Date:   Mon Nov 25 13:30:38 2024 +0530
+| 
+|     add first english greeting
+| 
+* commit 4ef8fcbc233bac6b053e60a942c1e69491349ee0
+  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+  Date:   Mon Nov 25 13:30:01 2024 +0530
+  
+      add empty file
+
+
+---
+
+## Merge with Conflicts
+
+senthilkumar.m@terminal Greetings % git switch eng_branch 
+Switched to branch 'eng_branch'
+senthilkumar.m@terminal Greetings % vi english_greetings.txt 
+senthilkumar.m@terminal Greetings % git add english_greetings.txt && git commit -m "add a different 2nd sentence to english greeting txt"
+[eng_branch e01d0ac] add a different 2nd sentence to english greeting txt
+ 1 file changed, 1 insertion(+)
+senthilkumar.m@terminal Greetings % git switch main
+Switched to branch 'main'
+senthilkumar.m@terminal Greetings % git merge eng_branch 
+Auto-merging english_greetings.txt
+CONFLICT (content): Merge conflict in english_greetings.txt
+Automatic merge failed; fix conflicts and then commit the result.
+senthilkumar.m@terminal Greetings % vi english_greetings.txt 
+senthilkumar.m@terminal Greetings % cat english_greetings.txt 
+Hi, Hello. How are you?
+<<<<<<< HEAD
+I am fine. 
+=======
+I am going better
+>>>>>>> eng_branch
+senthilkumar.m@terminal Greetings % vi english_greetings.txt 
+senthilkumar.m@terminal Greetings % git add english_greetings.txt 
+senthilkumar.m@terminal Greetings % git commit -m "merge conflict resolved"
+[main 90d0afd] merge conflict resolved
+senthilkumar.m@terminal Greetings % git merge eng_branch 
+Already up to date.
+senthilkumar.m@terminal Greetings % git log --decorate --all --graph
+*   commit 90d0afd4a6308ec321675d52e15110b443265e19 (HEAD -> main)
+|\  Merge: 8bebcda e01d0ac
+| | Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| | Date:   Mon Nov 25 13:57:00 2024 +0530
+| | 
+| |     merge conflict resolved
+| | 
+| * commit e01d0acbe4320b8ce3919b78d59dda7cddfa17d4 (eng_branch)
+| | Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| | Date:   Mon Nov 25 13:49:27 2024 +0530
+| | 
+| |     add a different 2nd sentence to english greeting txt
+| |   
+* |   commit 8bebcdaf6559f2593b65d049d495b03881fd4665
+|\ \  Merge: 637f9ca e6f74c7
+| | | Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| | | Date:   Mon Nov 25 13:42:09 2024 +0530
+| | | 
+| | |     Merge branch 'fr_branch' containing `french_greeting` with `main` branch
+| | | 
+| * | commit e6f74c7ab7ee1b1b2b7324ceefadf18b5acefb67 (fr_branch)
+| |/  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| |   Date:   Mon Nov 25 13:41:16 2024 +0530
+| |   
+| |       add first french greeting
+| | 
+* | commit 637f9ca1ec213f0cbf0705ecd2b2485e1ec028c5
+|/  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+|   Date:   Mon Nov 25 13:42:01 2024 +0530
+|   
+|       add second sentence in english greeting txt
+| 
+* commit 5dff6f9747dbe6f612260f144e5a331b17c6e7ee
+| Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+| Date:   Mon Nov 25 13:30:38 2024 +0530
+| 
+|     add first english greeting
+| 
+* commit 4ef8fcbc233bac6b053e60a942c1e69491349ee0
+  Author: senthilkumar.m <senthilkumar.m@toyotaconnected.co.in>
+  Date:   Mon Nov 25 13:30:01 2024 +0530
+  
+      add empty file
+
+---
+
+## git diff <branch_name>..<another_branch>
+
+- Finding difference between 2 branches
+
+senthilkumar.m@terminal Greetings % git diff main..eng_branch
+diff --git a/english_greetings.txt b/english_greetings.txt
+index 2063003..cbe09d9 100644
+--- a/english_greetings.txt
++++ b/english_greetings.txt
+@@ -1,3 +1,2 @@
+ Hi, Hello. How are you?
+-I am fine. 
+ I am going better
+diff --git a/french_greetings.txt b/french_greetings.txt
+deleted file mode 100644
+index 0104379..0000000
+--- a/french_greetings.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Salut comment vas-tu
+
+- `main` branch is automatically called `a` and `eng_branch` is automatically called `b`
+- Every line that has changed reflected with either a `-` or `+` sign
+- Lines that being with `-` come from file type `a/*.txt` and 
+- Lines that start with `+` are featured only in `b/*.txt`
+
+---
+
+## git diff --staged
+
+> Show me what will be included in my commit if I run git commit right now
+
+senthilkumar.m@terminal Greetings % git diff --staged
+senthilkumar.m@terminal Greetings % git status 
+On branch main
+nothing to commit, working tree clean
+senthilkumar.m@terminal Greetings % ls  
+english_greetings.txt	french_greetings.txt
+senthilkumar.m@terminal Greetings % vi french_greetings.txt 
+
+# unless added via `git add <file>` it won't show in `git diff --staged`
+senthilkumar.m@terminal Greetings % git diff --staged
+senthilkumar.m@terminal Greetings % git add french_greetings.txt 
+senthilkumar.m@terminal Greetings % git diff --staged            
+diff --git a/french_greetings.txt b/french_greetings.txt
+index 0104379..7a5abe1 100644
+--- a/french_greetings.txt
++++ b/french_greetings.txt
+@@ -1 +1,2 @@
+ Salut comment vas-tu
++Je vais bien merci
+
+---
+
+## git restore --staged <file_name>
+
+- If you want to unstage a staged file (that was staged using `git add`)
+- It does not remove the changes made. 
+
+## git restore <file_name>
+ 
+- "git restore <file>..." removes all changes made after a commit on that file and discards those changes in working directory
