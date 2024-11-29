@@ -517,6 +517,49 @@ index 519d824..bd8c72c 100644
 +    Adding 1% to twenty score
 +    (I put that line in 'cause it scans, no more)
 +    "Goodbye" from error 404
+
+senthilkumar.m@terminal  yesterday-exercise % git show f199959:lyrics.txt 
+Yesterday
+All my troubles seemed so far away
+Now it looks as though they're here to stay
+Oh, I believe in yesterday
+
+Suddenly
+I'm not half the man I used to be
+There's a shadow hanging over me
+Oh, yesterday came suddenly
+
+Why she had to go
+I don't know, she wouldn't say
+I said something wrong
+Now I long for yesterday
+
+Yesterday
+Love was such an easy game to play
+Now I need a place to hide away
+Oh, I believe in yesterday
+
+senthilkumar.m@terminal  yesterday-exercise % git show 82d049a:lyrics.txt
+    404
+    Guess this ain't the page you're looking for
+    On this website there are thousands more
+    With no error 404
+    
+    Suddenly
+    This is not the page you thought you'd see
+    But it's not an error 403
+    Yes, 404s come easily
+
+    Why it has to show, I don't know
+    Or what it's for
+    You typed something wrong?
+    Here's no song - it's 404
+    
+    404
+    Adding 1% to twenty score
+    (I put that line in 'cause it scans, no more)
+    "Goodbye" from error 404
+
 senthilkumar.m@terminal  yesterday-exercise % vi lyrics.txt 
 senthilkumar.m@terminal  yesterday-exercise % vi lyrics.txt
 senthilkumar.m@terminal  yesterday-exercise % git status
